@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:workshop1/models/news.dart';
-import 'package:workshop1/models/news_response.dart';
 
 class NewsItem extends StatefulWidget {
-  final Articles news;
+  final News news;
   const NewsItem(this.news);
   _NewsItemState createState() => _NewsItemState();
 }
@@ -15,7 +14,7 @@ class _NewsItemState extends State<NewsItem> {
     return _buildTiles(widget.news);
   }
 
-  Widget _buildTiles(Articles item) {
+  Widget _buildTiles(News item) {
     return Card(
       margin: EdgeInsets.all(5),
       shape: RoundedRectangleBorder(
@@ -34,7 +33,7 @@ class _NewsItemState extends State<NewsItem> {
                   borderRadius: BorderRadius.only(topLeft:Radius.circular(10),topRight: Radius.circular(10)
                   ),
                   child: Image(
-                    image: NetworkImage(item.urlToImage),
+                    image: NetworkImage(item.image),
                     fit: BoxFit.cover,
                   )),
             ),
@@ -54,7 +53,7 @@ class _NewsItemState extends State<NewsItem> {
                   padding: const EdgeInsets.only(left: 10),
                   child: Row(
                     children: <Widget>[
-                      Expanded(child: Text(item.publishedAt.toString())),
+                      Expanded(child: Text(item.datetime.toString())),
                       IconButton(
                         icon: Icon(Icons.subject),
                       )
