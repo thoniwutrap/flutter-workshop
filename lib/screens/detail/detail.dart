@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:workshop1/models/news.dart';
+import 'package:workshop1/models/news_response.dart';
 
 class DetailScreen extends StatefulWidget {
-  News news;
+  Articles news;
   final Widget child;
 
   DetailScreen({Key key, this.child,@required this.news}) : super(key: key);
@@ -48,7 +49,7 @@ class DetailScreenState extends State<DetailScreen> {
                     children: <Widget>[
                       Expanded(
                         child: Image.network(
-                          widget.news.image,
+                          widget.news.urlToImage,
                           fit: BoxFit.cover,
                         ),
                       )
@@ -81,7 +82,7 @@ class DetailScreenState extends State<DetailScreen> {
                         right: 20,
                         top: 10,
                       ),
-                      child: Text(widget.news.detail),
+                      child: Text(widget.news.description),
                     ),
                   ],
                 ),
